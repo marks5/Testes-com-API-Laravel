@@ -21,3 +21,6 @@ Route::resource('/liquen','Liquends',['middleware' => 'auth:api']);
 
 Route::get('/usuarios','UsuarioController@getUsuarios');
 Route::post('/usuarios','UsuarioController@postUsuario');
+
+Route::get('/games','ControllerGames@getGames');
+Route::post('/games','ControllerGames@postGames');
