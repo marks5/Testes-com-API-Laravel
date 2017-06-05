@@ -14,6 +14,16 @@ class ControllerGames extends Controller
         return \App\Games::all();
     }
 
+    public function getGame($id)
+    {
+        $game = \App\Games::find($id);
+        if(!empty($game)){
+            return $game;
+        }else{
+            return response()->json(['Status' => 'Id não existente'],404);
+        }
+    }
+
     public function postGames(Request $request){
 
         $regex = "((https?|ftp|http)\:\/\/)?"; // SCHEME 
@@ -36,6 +46,19 @@ class ControllerGames extends Controller
             }
         } else {
             return response()->json(['Status' => 'Erro ao salvar'],404);
+        }
+    }
+
+    public function putGame(Request $request,$id)
+    {
+        $game = \App\Games::find($id);
+        if(!empty($game)){
+            $game->nome = $request->nome;
+            $game->url = $request->url;
+            $game->save();
+            return response()->json(['Status' => 'Ok'],201);
+        }else{
+            return response()->json(['Status' => 'Id não existente'],404);
         }
     }
 }

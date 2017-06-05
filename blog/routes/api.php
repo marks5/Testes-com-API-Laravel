@@ -23,4 +23,6 @@ Route::get('/usuarios','UsuarioController@getUsuarios');
 Route::post('/usuarios','UsuarioController@postUsuario');
 
 Route::get('/games','ControllerGames@getGames');
+Route::get('/games/{id}','ControllerGames@getGame');
 Route::post('/games','ControllerGames@postGames');
+Route::put('/games/{id}','ControllerGames@putGames');
